@@ -1,10 +1,11 @@
 import { ListTask } from "./components/listTask";
+import { TitleTask } from "./components/titleTask";
 import { TodoProvider } from "./context/todoProvider";
 
 export const TodoList = (): JSX.Element =>{
     return(
         <TodoProvider>
-            <h1>Todo List:</h1>
+            <TitleTask></TitleTask>
             <ListTask></ListTask>
         </TodoProvider>
     )

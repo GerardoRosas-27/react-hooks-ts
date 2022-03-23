@@ -1,13 +1,10 @@
-
-import { useContext } from 'react'
-import { TodoContext } from '../context/todoContext'
+import { useTodos } from '../hooks/useTodos'
 import { TodoList } from '../interfaces/todoList'
 import { ItemTask } from './itemTask'
 
 export const ListTask = () => {
 
-    const { todoState } = useContext(TodoContext)
-    const { todos } = todoState;
+    const { todos } = useTodos();
     console.log(todos)
     return (
         <ul>
