@@ -1,24 +1,20 @@
 
-import { GeneralApp, Task, Props, Event, PropsEvents } from '../interfaces/generalApp'
+import { useContext } from 'react'
+import { TodoContext } from '../context/todoContext'
+import { TodoList } from '../interfaces/todoList'
+import { ItemTask } from './itemTask'
 
-export default function ListTask( propsEvent: PropsEvents<Task[], number>){
+export const ListTask = () => {
 
-    const onDeleteTask = (id: number) =>{
-        propsEvent.event(id)
-    }
+    const { todoState } = useContext(TodoContext)
+    const { todos } = todoState;
+    console.log(todos)
     return (
-  
-        <div>
-            {propsEvent.props?.map( (task: Task) => (
-                <div key={task.id}>
-                    <p>{task.id}</p>
-                    <p>{task.name}</p>
-                    <button onClick={ () => onDeleteTask(task.id)}>Delete</button>
-                </div>
-               
+        <ul>
+            {todos?.map((task: TodoList) => (
+                <ItemTask key={task.id} props={task}></ItemTask>
             ))}
-        </div>
-        
-        
+        </ul>
+
     )
 }
